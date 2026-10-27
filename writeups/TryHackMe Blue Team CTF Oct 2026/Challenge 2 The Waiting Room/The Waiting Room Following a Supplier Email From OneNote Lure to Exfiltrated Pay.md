@@ -1,6 +1,6 @@
 # **TryHackMe Blue Team CTF (Oct 2026): Challenge 2 The Waiting Room**
 
-*A write-up of challenge 2 from the 2026 Oct CTF (TryHackMe),also available on Medium:https://medium.com/@wendelwalterleander/tryhackme-blue-team-ctf-oct-2026-challenge-2-the-waiting-room-9c25d3f1e72e?postPublishedType=initial*
+*A write-up of challenge 2 from the 2026 Oct CTF (TryHackMe),also available on Medium: https://medium.com/@wendelwalterleander/tryhackme-blue-team-ctf-oct-2026-challenge-2-the-waiting-room-9c25d3f1e72e?postPublishedType=initial*
 
 ## Challenge Description
 
