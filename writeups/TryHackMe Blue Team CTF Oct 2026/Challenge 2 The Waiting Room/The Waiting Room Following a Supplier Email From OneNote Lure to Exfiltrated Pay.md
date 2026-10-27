@@ -71,7 +71,7 @@ for i, p in enumerate(m.walk()):
 ```
 
  <p align="center">
-  <img src="images/image.png" alt="Logo">
+  <img src="images/image4.png" alt="Logo">
  </p>
 
 The email was from **Luke Sullivan** (`accounts@meridian.thm`) to **Michelle Smith** (`m.smith@westbrook.thm`), subject *October stationery order / PO-1048*, sent Tue 06 Oct 2026 17:40:07. It had a plain text body and one attachment, `Remittance.one` (`application/onenote`, SHA-256 `393d80fb5a56484ccb615c8fc70c5f3009457b62a281788b5dfa79c209ec8669`), and `file` agreed that it's a Microsoft OneNote file.
