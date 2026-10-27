@@ -5,7 +5,7 @@
 ## Challenge Description
 
  <p align="center">
-  <img src="images/img1.png" alt="Logo">
+  <img src="images/image1.png" alt="Logo">
  </p>
 
 **The Waiting Room** is a medium-difficulty, 45-minute team room from the B2C2B 2026 Oct CTF, and its tagline is *A supplier email hides an odd attachment. Follow the evidence and find what left the workstation.* The challenge prompt reads: *A routine supplier email has left Michelle Smith with an attachment that did not open as expected. Examine the correspondence, trace the workstation activity, and determine what happened after she opened it.*
@@ -41,11 +41,11 @@ There isn't a software vulnerability here, since this one is really about social
 **Tools:** Python (the `email`, `hashlib`, `re`, `json` and `base64` modules, plus a small hand-written RC4), `one-extract` (Volexity's OneNote extractor, which lives in the provided `python-env`), `evtx_dump` and `jq` for the Sysmon log, `tshark` for the pcap, and `sha256sum`, `fold` and `xxd` for odds and ends. CyberChef was available too, but I ended up doing the decryption in Python.
 
  <p align="center">
-  <img src="images/img2.png" alt="Logo">
+  <img src="images/image2.png" alt="Logo">
  </p>
 
  <p align="center">
-  <img src="images/img3.png" alt="Logo">
+  <img src="images/image3.png" alt="Logo">
  </p>
 
 Seeing `one-extract` in the `python-env` listing kind of gave away that the attachment would be a OneNote file before I even opened the email.
@@ -71,7 +71,7 @@ for i, p in enumerate(m.walk()):
 ```
 
  <p align="center">
-  <img src="images/img4.png" alt="Logo">
+  <img src="images/image.png" alt="Logo">
  </p>
 
 The email was from **Luke Sullivan** (`accounts@meridian.thm`) to **Michelle Smith** (`m.smith@westbrook.thm`), subject *October stationery order / PO-1048*, sent Tue 06 Oct 2026 17:40:07. It had a plain text body and one attachment, `Remittance.one` (`application/onenote`, SHA-256 `393d80fb5a56484ccb615c8fc70c5f3009457b62a281788b5dfa79c209ec8669`), and `file` agreed that it's a Microsoft OneNote file.
@@ -85,7 +85,7 @@ one-extract --extract-files --extract-meta --output-directory ~/work/ex Remittan
 ```
 
  <p align="center">
-  <img src="images/img5.png" alt="Logo">
+  <img src="images/image5.png" alt="Logo">
  </p>
 
 The metadata said the page title is *October remittance - PO-1048* and it was created at 2026-10-06T17:37:16Z. The tool wrote six generically named objects, and hashing and running `file` on them gave this:
@@ -98,7 +98,7 @@ The metadata said the page title is *October remittance - PO-1048* and it was cr
 | **`Remittance.one_1`** | **HTML document, one long line** | **1866 B** | **the suspect** |
 
  <p align="center">
-  <img src="images/img6.png" alt="Logo">
+  <img src="images/image6.png" alt="Logo">
  </p>
 
 The HTML object has a SHA-256 of `e3e53f2e21df0b56eeb62d50146c4d69eb8cbc1bab5b8ba13f8ba5859870f6b3`. At this point it was only a hypothesis, since I'd picked it purely because it was the odd one out, and I wanted Sysmon to confirm it was the thing that actually ran.
@@ -122,7 +122,7 @@ for off in (0, 1):
 ```
 
  <p align="center">
-  <img src="images/img8.png" alt="Logo">
+  <img src="images/image8.png" alt="Logo">
  </p>
 
 ```
@@ -142,7 +142,7 @@ Same approach as I used for event logs before: convert with `evtx_dump`, then bu
 jq -r 'select(.Event.System.EventID==1) | [.Event.System.TimeCreated."#attributes".SystemTime, .Event.EventData.ProcessId, .Event.EventData.Image, .Event.EventData.CommandLine, .Event.EventData.ParentImage] | @tsv' sysmon.jsonl > proc.tsv
 ```
  <p align="center">
-  <img src="images/img9.png" alt="Logo">
+  <img src="images/image9.png" alt="Logo">
  </p>
 
 Most of the rows are Windows background noise (svchost, SearchProtocolHost, update services and so on). The ones that matter:
@@ -154,7 +154,7 @@ Most of the rows are Windows background noise (svchost, SearchProtocolHost, upda
           script:   C:\Users\m.smith\AppData\Local\Meridian\receipt.js
 ```
  <p align="center">
-  <img src="images/img10.png" alt="Logo">
+  <img src="images/image10.png" alt="Logo">
  </p>
 
 This is what the analyst note meant about *what the attachment contains versus what actually ran*. The OneNote file contained a PDF, a CSV and an HTA, but the only one I saw being launched was the HTA (by `mshta.exe`, from a path with the RLO character in it, which the terminal even rendered mirrored). I didn't see any process rows for the decoys, thus the HTA object, **`e3e53f2e...f6b3`**, is the Q1 answer. One second after `mshta.exe` started, it spawned `cscript.exe` with PID **1996** to run `receipt.js` from `AppData\Local\Meridian`, and that's the answer to **Q4: 1996**.
@@ -166,7 +166,7 @@ There were also three `powershell.exe -EncodedCommand` processes (PIDs 1520, 258
 I printed the HTA as text with `fold -w 120` and, kind of expectedly, it was obfuscated:
 
  <p align="center">
-  <img src="images/img11.png" alt="Logo">
+  <img src="images/image11.png" alt="Logo">
  </p>
 
 - an `entries` array of hex strings, and a `value(i)` function that decodes entry *i* by XORing every byte with **57**
@@ -190,7 +190,7 @@ So I wrote a small script that parses the `entries` array, decodes each one with
 | 10 | `MR-6106-028` |
 
  <p align="center">
-  <img src="images/img12.png" alt="Logo">
+  <img src="images/image12.png" alt="Logo">
  </p>
 
 Entry 3 is the download URL, so the host that served the second stage is **`portal.meridian.thm`** (Q3). Entries 4 to 6 are exactly the path where Sysmon saw `receipt.js`, and entry 10 is the argument passed to it. Entry 9 looked suspiciously like the answer to Q5, but I wanted to see how it was used before trusting it.
@@ -200,7 +200,7 @@ Entry 3 is the download URL, so the host that served the second stage is **`port
 Sysmon logged DNS lookups for `portal.meridian.thm` and connections to `10.0.2.2` on port **8080**, although it showed the process as `<unknown process>`, so those events couldn't be pinned to `mshta.exe` or `cscript.exe` directly.
 
  <p align="center">
-  <img src="images/img14.png" alt="Logo">
+  <img src="images/image14.png" alt="Logo">
  </p>
 
 The pcap gave a clearer picture:
@@ -258,7 +258,7 @@ print(pt.decode()); print(hashlib.sha256(pt).hexdigest())
 ```
 
  <p align="center">
-  <img src="images/img13.png" alt="Logo">
+  <img src="images/image13.png" alt="Logo">
  </p>
 
 It came out as a readable CSV, which is also my sanity check that the key and method are right, since a wrong key just gives garbage. The header is `invoice,vendor,due_date,amount,currency,account,status`, followed by three rows: invoice `MR-6106-028` (Meridian Office Supplies, 3840.00 GBP, awaiting approval), `ST-8832` (Stonebridge Couriers, 126.40 GBP, scheduled) and `WR-4407` (Westbrook Print, 612.00 GBP, awaiting approval), each with a bank account number (IBAN). Its SHA-256 is `c19c4964c2a77872c49750cc1c2dd443b48fba984b41988aec6fbc780faed09a`, and I submitted the hash of the **decrypted** CSV for Q6, which the platform accepted.
@@ -268,7 +268,7 @@ It came out as a readable CSV, which is also my sanity check that the key and me
 This room's final answers were hashes and a key and not a `THM{...}` string, so here is what I submitted, all marked correct:
 
  <p align="center">
-  <img src="images/img15.png" alt="Logo">
+  <img src="images/image15.png" alt="Logo">
  </p>
 
 | # | Question | Answer |
