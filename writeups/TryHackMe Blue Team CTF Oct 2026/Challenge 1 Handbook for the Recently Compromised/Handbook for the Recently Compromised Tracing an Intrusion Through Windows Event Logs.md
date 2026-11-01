@@ -1,6 +1,10 @@
 # TryHackMe Blue Team CTF (Oct 2026): Challenge 1 Handbook for the Recently Compromised
 
-*A write-up of challenge 1 from the 2026 Oct CTF (TryHackMe),also available on Medium: https://medium.com/@wendelwalterleander/tryhackme-blue-team-ctf-oct-2026-challenge-1-handbook-for-the-recently-compromised-d42ed8aa0950*
+*A write-up of challenge 1 from the 2026 Oct CTF (TryHackMe)*
+
+📖 [Read the full write-up on Medium](https://medium.com/@wendelwalterleandertryhackme-blue-team-ctf-oct-2026-challenge-1-handbook-for-the-recently-compromised-d42ed8aa0950)
+
+---
 
 ## Challenge Description
 

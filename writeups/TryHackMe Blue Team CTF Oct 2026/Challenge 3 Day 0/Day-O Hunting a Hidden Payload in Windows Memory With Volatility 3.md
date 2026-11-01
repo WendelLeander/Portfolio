@@ -1,6 +1,10 @@
 # **TryHackMe Blue Team CTF (Oct 2026): Challenge 3 Day 0**
 
-*A write-up of challenge 3 from the 2026 Oct CTF (TryHackMe) ,also available on Medium: https://medium.com/@wendelwalterleander/tryhackme-blue-team-ctf-oct-2026-challenge-3-day-0-15678e112d30*
+*A write-up of challenge 3 from the 2026 Oct CTF (TryHackMe)*
+
+📖 [Read the full write-up on Medium](https://medium.com/@wendelwalterleander/tryhackme-blue-team-ctf-oct-2026-challenge-3-day-0-15678e112d30)
+
+---
 
 ## Challenge Description
 
