@@ -1,0 +1,25 @@
+Metric,Value
+unicast,474
+total,500
+multicast,20
+broadcast,6
+
+Top Source MACs
+MAC,Count
+54:69:90:17:8d:a2,343
+10:68:38:17:56:c3,123
+bc:2d:ef:3f:c9:19,20
+24:a4:52:a4:c0:22,14
+
+Top Destination MACs
+MAC,Count
+10:68:38:17:56:c3,360
+54:69:90:17:8d:a2,123
+01:00:5e:00:00:fb,11
+ff:ff:ff:ff:ff:ff,6
+
+Top Broadcast/Multicast Senders
+MAC,Count,Type
+bc:2d:ef:3f:c9:19,13,multicast
+24:a4:52:a4:c0:22,7,multicast
+54:69:90:17:8d:a2,6,broadcast

@@ -1,0 +1,15 @@
+metric,value
+total,183
+broadcast,1
+multicast,6
+unicast,176
+
+Top Source MACs
+54:69:90:17:8d:a2,92
+10:68:38:17:56:c3,91
+
+Top Destination MACs
+10:68:38:17:56:c3,92
+54:69:90:17:8d:a2,84
+01:00:5e:00:00:fb,6
+ff:ff:ff:ff:ff:ff,1
