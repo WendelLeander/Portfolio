@@ -71,6 +71,8 @@ p{max-width:66ch;margin:0 0 1rem}
 .card p{margin:0;font-size:.95rem;color:var(--muted)}
 .tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:auto;padding-top:.4rem}
 .tags span{background:var(--tag);border-radius:4px;padding:.1rem .5rem;font-size:.8rem}
+.roles{list-style:none;margin:0;padding:0;display:grid;gap:.6rem}
+.roles time{display:block;font-size:.85rem;color:var(--muted)}
 .card.empty{border-style:dashed;background:transparent}
 .card.empty .body{justify-content:center;min-height:200px}
 
@@ -112,7 +114,6 @@ footer{padding:2rem 0 0;color:var(--muted);font-size:.9rem}
       <li><a href="#experience">Work and volunteering</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#certifications">Certifications</a></li>
-      <li><a href="#references">References</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -151,6 +152,16 @@ footer{padding:2rem 0 0;color:var(--muted);font-size:.9rem}
   <h2>Academic work</h2>
   <p>Projects and research I'm proudest of. Each card links to its code or write-up.</p>
   <div class="grid">
+
+    <article class="card">
+      <div class="shot"><img src="assets/images/thesis.jpg" alt="PhishEvade thesis results" onerror="this.remove()"></div>
+      <div class="body">
+        <h3>Thesis: Obfuscation-Aware Feature Engineering for Evasion-Heavy Phishing URL Detection</h3>
+        <p>Adds Shannon entropy and structural complexity features, 13 in total, so lightweight classifiers can catch obfuscated phishing URLs without deep learning or page content. Tested with Logistic Regression, Naïve Bayes, Random Forest, AdaBoost, and XGBoost on a balanced 10,000-URL dataset from 2022 to 2026. Co-authored with Kyle Gabriel A. Maristela and Owen Phillip C. San Luis.</p>
+        <div class="tags"><span>Thesis</span><span>Feature engineering</span><span>Phishing</span><span>Machine learning</span></div>
+        <p><a href="https://github.com/WendelLeander/PhishEvade" rel="noopener">View the PhishEvade repository</a></p>
+      </div>
+    </article>
 
     <article class="card">
       <div class="shot"><img src="assets/images/f-max.png" alt="F-Max feature selection results" onerror="this.remove()"></div>
@@ -198,20 +209,15 @@ footer{padding:2rem 0 0;color:var(--muted);font-size:.9rem}
     </article>
 
     <article class="card">
-      <div class="shot"><img src="assets/images/voip.png" alt="VoIP system diagram" onerror="this.remove()"></div>
+      <div class="shot"><img src="assets/images/ctfs.jpeg" alt="Capture the flag competition results" onerror="this.remove()"></div>
       <div class="body">
-        <h3>Peer-to-peer VoIP audio system</h3>
-        <p>A Python VoIP system with SIP/SDP signaling, RTP streaming, and RTCP telemetry.</p>
-        <div class="tags"><span>SIP</span><span>RTP</span><span>Network programming</span></div>
-      </div>
-    </article>
-
-    <article class="card">
-      <div class="shot"><img src="assets/images/mvs-ctf.png" alt="Magnet Virtual Summit CTF" onerror="this.remove()"></div>
-      <div class="body">
-        <h3>Magnet Virtual Summit 2026 CTF</h3>
-        <p>Solved digital forensics challenges across disk captures, memory captures, and cryptography.</p>
-        <div class="tags"><span>CTF</span><span>Disk and memory forensics</span><span>Cryptography</span></div>
+        <h3>Capture the Flag compilation</h3>
+        <ul class="roles">
+          <li><strong>CSCTF 2026</strong></li>
+          <li><strong>TryHackMe October 2026 Blue Teaming CTF</strong></li>
+          <li><strong>Magnet Virtual Summit 2026 CTF</strong><time>Digital forensics across disk captures, memory captures, and cryptography</time></li>
+        </ul>
+        <div class="tags"><span>CTF</span><span>Blue team</span><span>Digital forensics</span><span>Cryptography</span></div>
       </div>
     </article>
 
@@ -223,13 +229,31 @@ footer{padding:2rem 0 0;color:var(--muted);font-size:.9rem}
   <h2>Work and volunteering</h2>
   <p>Business, volunteer, part-time, and formal work that shows how my skills developed.</p>
   <div class="grid">
-    <!-- Copy this card for each experience. Replace the text and add a photo at assets/images/. -->
-    <article class="card empty">
+    <article class="card">
+      <div class="shot"><img src="assets/images/iso.jpg" alt="Information Security Organization logo or event photo" onerror="this.remove()"></div>
       <div class="body">
-        <h3>Add your first experience</h3>
-        <p>Include the role, organization, dates, a photo, and two or three results you achieved. Copy this card from <code>index.html</code> to add more.</p>
+        <h3>Information Security Organization</h3>
+        <p>Manila, National Capital Region, Philippines. 1 year 1 month.</p>
+        <ul class="roles">
+          <li><strong>Officer for Research and Training</strong><time>October 2026 to present</time></li>
+          <li><strong>Officer for Finance</strong><time>November 2025 to October 2026</time></li>
+        </ul>
+        <div class="tags"><span>Leadership</span><span>Research</span><span>Training</span><span>Finance</span></div>
       </div>
     </article>
+
+    <article class="card">
+      <div class="shot"><img src="assets/images/google.jpg" alt="Google Developer Groups on Campus De La Salle University logo or event photo" onerror="this.remove()"></div>
+      <div class="body">
+        <h3>Google Developer Groups on Campus, De La Salle University</h3>
+        <p>Manila, National Capital Region, Philippines.</p>
+        <ul class="roles">
+          <li><strong>Officer for Finance</strong><time>October 2026 to present</time></li>
+        </ul>
+        <div class="tags"><span>Leadership</span><span>Finance</span></div>
+      </div>
+    </article>
+    <!-- To add another experience, copy one of the cards above. Add a short description and a photo at assets/images/. -->
   </div>
 </section>
 
@@ -252,20 +276,6 @@ footer{padding:2rem 0 0;color:var(--muted);font-size:.9rem}
     <li><time>September 2023 to present</time><h3>De La Salle University, Manila</h3>BS Computer Science, Major in Network and Information Security. First Honor Dean's Lister (A.Y. 2023–2024 Term 2; A.Y. 2025–2026 Terms 2 and 3). Second Honor Dean's Lister (A.Y. 2023–2024 Term 3; A.Y. 2024–2025 Terms 1 to 3). DOST SEI Scholar.</li>
     <li><time>September 2021 to July 2023</time><h3>Aurora National Science High School</h3>STEM Strand. Graduated with Honors. Special Award in Science.</li>
   </ul>
-</section>
-
-<section id="references">
-  <h2>References</h2>
-  <p>Available on request. I only list people who have agreed to be contacted.</p>
-  <div class="grid">
-    <!-- Add a reference only after the person agrees. Copy this card for each one. -->
-    <article class="card empty">
-      <div class="body">
-        <h3>Add a reference</h3>
-        <p>Name, title, organization, how you know them, and an email address.</p>
-      </div>
-    </article>
-  </div>
 </section>
 
 <section id="contact">
