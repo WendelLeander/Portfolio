@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wendel Walter A. Leander | Cybersecurity E-Portfolio</title>
+<meta name="description" content="E-portfolio of Wendel Walter A. Leander, Computer Science student (Network and Information Security) at De La Salle University, focused on SOC and Blue Team work.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EEF2F5; --panel:#FFFFFF; --ink:#0E1B26; --muted:#4A5B69;
+  --line:#C9D3DB; --accent:#0B6E78; --accent-ink:#FFFFFF; --tag:#E1EBF0;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0C151D; --panel:#14212C; --ink:#E6EEF3; --muted:#9DB0BE;
+    --line:#2A3B49; --accent:#5CC4CE; --accent-ink:#06222A; --tag:#1C2E3B;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0C151D; --panel:#14212C; --ink:#E6EEF3; --muted:#9DB0BE;
+  --line:#2A3B49; --accent:#5CC4CE; --accent-ink:#06222A; --tag:#1C2E3B;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:1.5rem}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.65 var(--sans)}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:-999px;top:0;background:var(--accent);color:var(--accent-ink);padding:.5rem 1rem;z-index:10}
+.skip:focus{left:0}
+
+.layout{display:grid;grid-template-columns:260px minmax(0,1fr);max-width:1120px;margin:0 auto}
+.side{position:sticky;top:0;align-self:start;height:100vh;padding:2.5rem 1.75rem;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:1.5rem}
+.side .id{font:600 1.35rem/1.2 var(--serif)}
+.side .role{color:var(--muted);font-size:.9rem;margin:.35rem 0 0}
+.side nav ul{list-style:none;margin:0;padding:0;display:grid;gap:.15rem}
+.side nav a{display:block;padding:.4rem .6rem;border-left:3px solid transparent;color:var(--ink);text-decoration:none;font-weight:500}
+.side nav a:hover,.side nav a[aria-current="true"]{border-left-color:var(--accent);background:var(--tag)}
+.theme{margin-top:auto;background:none;border:1px solid var(--line);color:var(--ink);padding:.45rem .8rem;border-radius:6px;font:inherit;cursor:pointer}
+
+main{padding:3rem clamp(1.25rem,4vw,3.5rem) 4rem}
+section{padding:2.75rem 0;border-top:1px solid var(--line)}
+section:first-of-type{border-top:0;padding-top:0}
+h1{font:600 clamp(2.4rem,6vw,4rem)/1.05 var(--serif);letter-spacing:-.02em;margin:0 0 1rem}
+h2{font:600 1.9rem/1.2 var(--serif);margin:0 0 1.25rem}
+h3{font:600 1.1rem/1.3 var(--sans);margin:0 0 .35rem}
+p{max-width:66ch;margin:0 0 1rem}
+.lead{font:400 1.3rem/1.5 var(--serif);max-width:44ch;color:var(--muted)}
+.lead strong{color:var(--ink);font-weight:600}
+
+.intro{display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:2rem;align-items:start}
+.photo{width:190px;aspect-ratio:4/5;border:1px solid var(--line);border-radius:6px;background:var(--tag);display:grid;place-items:center;overflow:hidden;color:var(--muted);font-size:.8rem;text-align:center;padding:.5rem}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+
+.btn{display:inline-block;background:var(--accent);color:var(--accent-ink);padding:.6rem 1.1rem;border-radius:6px;font-weight:600;text-decoration:none;margin:.25rem .5rem .25rem 0}
+.btn.alt{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin:1.5rem 0 0}
+.fact{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1rem}
+.fact b{display:block;font-size:.85rem;color:var(--muted);font-weight:500;margin-bottom:.2rem}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.25rem}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:6px;overflow:hidden;display:flex;flex-direction:column}
+.card .shot{aspect-ratio:16/9;background:var(--tag);display:grid;place-items:center;color:var(--muted);font-size:.8rem;border-bottom:1px solid var(--line)}
+.card .shot img{width:100%;height:100%;object-fit:cover;display:block}
+.card .body{padding:1rem 1.1rem 1.2rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
+.card p{margin:0;font-size:.95rem;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:auto;padding-top:.4rem}
+.tags span{background:var(--tag);border-radius:4px;padding:.1rem .5rem;font-size:.8rem}
+.card.empty{border-style:dashed;background:transparent}
+.card.empty .body{justify-content:center;min-height:200px}
+
+.skills{display:grid;grid-template-columns:150px 1fr;gap:.5rem 1.25rem;margin:0}
+.skills dt{font-weight:600}.skills dd{margin:0;color:var(--muted)}
+.timeline{list-style:none;margin:0;padding:0 0 0 1.1rem;border-left:2px solid var(--line);display:grid;gap:1.25rem}
+.timeline li{position:relative}
+.timeline li::before{content:"";position:absolute;left:calc(-1.1rem - 6px);top:.5rem;width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.timeline time{display:block;font-size:.85rem;color:var(--muted)}
+footer{padding:2rem 0 0;color:var(--muted);font-size:.9rem}
+
+@media (max-width:860px){
+  .layout{grid-template-columns:1fr}
+  .side{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:1.25rem}
+  .side nav ul{display:flex;flex-wrap:wrap;gap:.25rem}
+  .side nav a{border-left:0;border-bottom:3px solid transparent;padding:.3rem .5rem}
+  .side nav a:hover,.side nav a[aria-current="true"]{border-bottom-color:var(--accent)}
+  .theme{margin-top:0;align-self:flex-start}
+  .intro{grid-template-columns:1fr}
+  .photo{width:150px}
+  .skills{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="layout">
+
+<aside class="side">
+  <div>
+    <div class="id">Wendel Walter A. Leander</div>
+    <p class="role">Cybersecurity student<br>SOC and Blue Team</p>
+  </div>
+  <nav aria-label="Sections">
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#academic">Academic work</a></li>
+      <li><a href="#experience">Work and volunteering</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#references">References</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <button class="theme" id="theme" type="button" aria-label="Switch between light and dark theme">Switch theme</button>
+</aside>
+
+<main id="main">
+
+<section id="about">
+  <div class="intro">
+    <div>
+      <h1>I investigate logs, packets, and registry artifacts.</h1>
+      <p class="lead">I'm a 4th-year Computer Science student specializing in <strong>Network and Information Security</strong> at De La Salle University, Manila.</p>
+      <p>My work centers on network programming, digital forensics, and phishing detection research. I've built a syslog analytics server, Windows registry forensic parsers, and a distributed feature-selection system for phishing URLs. I also compete in forensics CTFs.</p>
+      <p>I'm looking for an entry-level cybersecurity internship, especially in a SOC or Blue Team role, where I can turn careful analysis into faster detection.</p>
+      <a class="btn" href="#academic">See my work</a>
+      <a class="btn alt" href="http://www.linkedin.com/in/wendel-walter-leander" rel="noopener">View LinkedIn profile</a>
+    </div>
+    <div class="photo"><img src="assets/images/profile.jpg" alt="Portrait of Wendel Walter A. Leander" onerror="this.replaceWith(document.createTextNode('Add your photo at assets/images/profile.jpg'))"></div>
+  </div>
+  <div class="facts">
+    <div class="fact"><b>Studying</b>BS Computer Science, Network and Information Security</div>
+    <div class="fact"><b>Honors</b>First and Second Honor Dean's Lister, DOST SEI Scholar</div>
+    <div class="fact"><b>Thesis</b>Obfuscation-aware feature engineering for phishing URL detection</div>
+  </div>
+</section>
+
+<section id="resume">
+  <h2>Resume</h2>
+  <p>My current resume covers education, projects, skills, and certifications.</p>
+  <a class="btn" href="resume/Wendel_Leander_Resume.pdf">Download resume (PDF)</a>
+  <a class="btn alt" href="https://github.com/WendelLeander/Portfolio/tree/main/resume" rel="noopener">Open resume folder</a>
+</section>
+
+<section id="academic">
+  <h2>Academic work</h2>
+  <p>Projects and research I'm proudest of. Each card links to its code or write-up.</p>
+  <div class="grid">
+
+    <article class="card">
+      <div class="shot"><img src="assets/images/f-max.png" alt="F-Max feature selection results" onerror="this.remove()"></div>
+      <div class="body">
+        <h3>F-Max and I-Max: phishing URL detection</h3>
+        <p>A distributed Forward Feature Selection system that cut dataset dimensionality by 72% while keeping 93.65% classification accuracy with only 5 features.</p>
+        <div class="tags"><span>Machine learning</span><span>Phishing</span><span>Python</span></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="shot"><img src="assets/images/mini-splunk.png" alt="Mini-Splunk syslog analytics server" onerror="this.remove()"></div>
+      <div class="body">
+        <h3>Mini-Splunk: concurrent syslog analytics server</h3>
+        <p>A multi-threaded server that ingests syslog messages in real time and supports log analysis.</p>
+        <div class="tags"><span>Log analysis</span><span>SIEM concepts</span><span>Concurrency</span></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="shot"><img src="assets/images/sam-parser.png" alt="SAM parser output" onerror="this.remove()"></div>
+      <div class="body">
+        <h3>SAM Python Parser</h3>
+        <p>Decodes Windows SAM registry hives so local accounts can be audited.</p>
+        <div class="tags"><span>Forensics</span><span>Windows</span><span>Python</span></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="shot"><img src="assets/images/usb-regparse.png" alt="USB RegParse output" onerror="this.remove()"></div>
+      <div class="body">
+        <h3>USB RegParse</h3>
+        <p>Extracts Windows USB registry artifacts to reconstruct device history.</p>
+        <div class="tags"><span>Forensics</span><span>Registry</span><span>Python</span></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="shot"><img src="assets/images/traffic-monitor.png" alt="Traffic monitor capture" onerror="this.remove()"></div>
+      <div class="body">
+        <h3>Broadcast and multicast traffic monitor</h3>
+        <p>A raw-socket monitor that captures and decodes broadcast and multicast packets.</p>
+        <div class="tags"><span>Networking</span><span>Raw sockets</span><span>Wireshark</span></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="shot"><img src="assets/images/voip.png" alt="VoIP system diagram" onerror="this.remove()"></div>
+      <div class="body">
+        <h3>Peer-to-peer VoIP audio system</h3>
+        <p>A Python VoIP system with SIP/SDP signaling, RTP streaming, and RTCP telemetry.</p>
+        <div class="tags"><span>SIP</span><span>RTP</span><span>Network programming</span></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="shot"><img src="assets/images/mvs-ctf.png" alt="Magnet Virtual Summit CTF" onerror="this.remove()"></div>
+      <div class="body">
+        <h3>Magnet Virtual Summit 2026 CTF</h3>
+        <p>Solved digital forensics challenges across disk captures, memory captures, and cryptography.</p>
+        <div class="tags"><span>CTF</span><span>Disk and memory forensics</span><span>Cryptography</span></div>
+      </div>
+    </article>
+
+  </div>
+  <p style="margin-top:1.5rem"><a href="https://github.com/WendelLeander/Portfolio/tree/main/projects" rel="noopener">Browse all projects on GitHub</a> or read the <a href="https://github.com/WendelLeander/Portfolio/tree/main/writeups" rel="noopener">investigation write-ups</a>.</p>
+</section>
+
+<section id="experience">
+  <h2>Work and volunteering</h2>
+  <p>Business, volunteer, part-time, and formal work that shows how my skills developed.</p>
+  <div class="grid">
+    <!-- Copy this card for each experience. Replace the text and add a photo at assets/images/. -->
+    <article class="card empty">
+      <div class="body">
+        <h3>Add your first experience</h3>
+        <p>Include the role, organization, dates, a photo, and two or three results you achieved. Copy this card from <code>index.html</code> to add more.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <dl class="skills">
+    <dt>Languages</dt><dd>C, Java, Python, Bash, Assembly</dd>
+    <dt>Web and data</dt><dd>HTML, CSS, JavaScript, Handlebars, MySQL, MongoDB</dd>
+    <dt>Security tools</dt><dd>Wireshark, Splunk Enterprise, VMware Workstation</dd>
+    <dt>Dev tools</dt><dd>Git, Visual Studio Code, PyCharm, Dev-C++, Arduino IDE</dd>
+    <dt>Systems</dt><dd>Windows, Linux</dd>
+    <dt>Spoken languages</dt><dd>English, Filipino</dd>
+  </dl>
+</section>
+
+<section id="certifications">
+  <h2>Certifications and education</h2>
+  <ul class="timeline">
+    <li><time>2026</time><h3>Google Cybersecurity Professional Certificate</h3>Coursera</li>
+    <li><time>September 2023 to present</time><h3>De La Salle University, Manila</h3>BS Computer Science, Major in Network and Information Security. First Honor Dean's Lister (A.Y. 2023–2024 Term 2; A.Y. 2025–2026 Terms 2 and 3). Second Honor Dean's Lister (A.Y. 2023–2024 Term 3; A.Y. 2024–2025 Terms 1 to 3). DOST SEI Scholar.</li>
+    <li><time>September 2021 to July 2023</time><h3>Aurora National Science High School</h3>STEM Strand. Graduated with Honors. Special Award in Science.</li>
+  </ul>
+</section>
+
+<section id="references">
+  <h2>References</h2>
+  <p>Available on request. I only list people who have agreed to be contacted.</p>
+  <div class="grid">
+    <!-- Add a reference only after the person agrees. Copy this card for each one. -->
+    <article class="card empty">
+      <div class="body">
+        <h3>Add a reference</h3>
+        <p>Name, title, organization, how you know them, and an email address.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Email me or connect on LinkedIn about internships and security projects.</p>
+  <a class="btn" href="mailto:wendel_leander@dlsu.edu.ph">wendel_leander@dlsu.edu.ph</a>
+  <a class="btn alt" href="http://www.linkedin.com/in/wendel-walter-leander" rel="noopener">LinkedIn</a>
+  <a class="btn alt" href="https://github.com/WendelLeander" rel="noopener">GitHub</a>
+  <footer>&copy; 2026 Wendel Walter A. Leander. Manila, Philippines.</footer>
+</section>
+
+</main>
+</div>
+
+<script>
+(function(){
+  var root=document.documentElement,btn=document.getElementById('theme');
+  try{var s=localStorage.getItem('theme');if(s)root.setAttribute('data-theme',s);}catch(e){}
+  btn.addEventListener('click',function(){
+    var dark=root.getAttribute('data-theme')==='dark'||(!root.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme: dark)').matches);
+    var next=dark?'light':'dark';
+    root.setAttribute('data-theme',next);
+    try{localStorage.setItem('theme',next);}catch(e){}
+  });
+  var links=[].slice.call(document.querySelectorAll('.side nav a'));
+  var map={};links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a;});
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.removeAttribute('aria-current');});map[e.target.id].setAttribute('aria-current','true');}});
+    },{rootMargin:'-30% 0px -60% 0px'});
+    Object.keys(map).forEach(function(id){var el=document.getElementById(id);if(el)io.observe(el);});
+  }
+})();
+</script>
+</body>
+</html>
