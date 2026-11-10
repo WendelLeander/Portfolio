@@ -1,3 +1,9 @@
 [submodule "projects/PhishEvade"]
 	path = projects/PhishEvade
 	url = https://github.com/WendelLeander/PhishEvade
+[submodule "projects/F-Max-and-I-Max"]
+	path = projects/F-Max-and-I-Max
+	url = https://github.com/WendelLeander/F-Max-and-I-Max
+[submodule "projects/USB-RegParse"]
+	path = projects/USB-RegParse
+	url = https://github.com/WendelLeander/USB-RegParse
